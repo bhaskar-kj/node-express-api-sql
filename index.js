@@ -3,15 +3,16 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
 const app = express();
-const PORT = 3000;
+const PORT = 'process.env.PORT'||3000;
 
 app.use(bodyParser.json());
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'databasebh.cdmtzj739jly.ap-south-1.rds.amazonaws.com',
-  user: 'admin',
-  password: 'qwerty123',
+  host: 'process.env.RDS_HOSTNAME',
+  user: 'process.env.RDS_USERNAME',
+  password: 'process.env.RDS_PASSWORD',
+  port:'process.env.RDS_PORT';
   database: 'bhaskar_db',
 });
 
