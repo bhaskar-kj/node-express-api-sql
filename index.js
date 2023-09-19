@@ -15,6 +15,21 @@ const pool = mysql.createPool({
   database: 'bhaskar_db',
 });
 
+// Check if the users table exists, and create it if not
+pool.query(
+  'CREATE TABLE IF NOT EXISTS users (' +
+    'id INT AUTO_INCREMENT PRIMARY KEY,' +
+    'name VARCHAR(255) NOT NULL,' +
+    'email VARCHAR(255) NOT NULL' +
+    ')',
+  (error) => {
+    if (error) {
+      console.error('Error creating the users table:', error);
+    } else {
+      console.log('Users table is ready.');
+    }
+  }
+);
 
 // Create a new record
 app.post('/api/users', (req, res) => {
@@ -26,8 +41,7 @@ app.post('/api/users', (req, res) => {
       if (error) {
         res.status(500).json({ error: 'An error occurred while adding a new user.' });
       } else {
-        res.json({ id: results.insertId,
-                    "message":"success" });
+        res.json({ id: results.insertId, message: 'success' });
       }
     });
   });
@@ -75,7 +89,6 @@ app.post('/api/users', (req, res) => {
       }
     });
   });
-  
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
