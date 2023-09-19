@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'database.cdmtzj739jly.ap-south-1.rds.amazonaws.com',
+  host: 'databasebh.cdmtzj739jly.ap-south-1.rds.amazonaws.com',
   user: 'admin',
   password: 'qwerty123',
   database: 'bhaskar_db',
