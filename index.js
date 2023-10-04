@@ -9,11 +9,11 @@ app.use(bodyParser.json());
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: 'process.env.RDS_HOSTNAME',
-  user: 'process.env.RDS_USERNAME',
-  password: 'process.env.RDS_PASSWORD',
-  port:'process.env.RDS_PORT';
-  database: 'bhaskar_db',
+  host: 'localhost',
+  user: 'root',
+  password: 'root1234',
+  port:'3306';
+  database: 'Nitish_DB',
 });
 
 // Check if the users table exists, and create it if not
