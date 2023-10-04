@@ -12,7 +12,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: 'root1234',
-  port:'3306';
+  port:'3306',
   database: 'Nitish_DB',
 });
 
